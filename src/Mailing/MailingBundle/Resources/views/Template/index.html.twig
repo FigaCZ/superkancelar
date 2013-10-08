@@ -1,0 +1,36 @@
+{# src/Mailing/MailingBundle/Resources/views/Template/index.html.twig #}
+{% extends 'MailingBundle::layout.html.twig' %}
+
+{% block title %}
+    Templates
+{% endblock %}
+
+{% block headline %}
+    Templates
+{% endblock %}    
+    
+{% block content %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    <a href="{{ path('MailingBundle_template_add') }}">Add template</a>
+    {% if templates %}
+    {% for template in templates %}
+    <table>
+        <tr>
+            <td><strong>{{ template.name }}</strong> - {{ template.subject }} ({{ template.type }})</td>
+        </tr>
+        <tr>
+            <td>{{ template.content|slice(0, 50) }}...</td>
+        </tr>
+        <tr>
+            <td><a href="{{ path('MailingBundle_template_edit', {'id': template.id }) }}">Edit</a> | <a href="{{ path('MailingBundle_template_delete', {'id': template.id }) }}">Delete</a></td>
+        </tr>
+    </table><br />
+    {% endfor %}
+    {% else %}
+        Žádné záznam k zobrazení...
+    {% endif %}
+{% endblock %}

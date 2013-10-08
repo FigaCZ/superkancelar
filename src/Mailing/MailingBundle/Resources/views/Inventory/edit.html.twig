@@ -1,0 +1,16 @@
+{# src/Mailing/MailingBundle/Resources/views/Inventory/add.html.twig #}
+{% extends 'MailingBundle::layout.html.twig' %}
+
+{% block title %}Edit inventory{% endblock%}
+{% block headline %}Edit inventory{% endblock%}
+{% block content %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    <form action="{{ path('MailingBundle_inventory_edit', {'id': id }) }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <input type="submit" />
+    </form>
+{% endblock %}

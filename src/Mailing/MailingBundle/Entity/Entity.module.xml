@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<orm-designer version="2.2.4.749" mvc="Symfony2" orm="Doctrine2">
+  <module name="Entity" import-format="Doctrine2Php" import-path="." uuid="0b1157bd-2d06-4b28-8f2b-e2e79fec43e6">
+    <entity name="Inventory" uuid="47608a24-10b4-4256-9e53-f5bcb06119d8">
+      <field name="id" type="integer" required="true" primary="true" uuid="4baf8227-d7a4-4436-9319-8da9c99221a1">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" type="string" size="100" uuid="43971804-88f1-4e62-ad14-99b550716159"/>
+      <orm-attributes>
+        <attribute name="table">inventory</attribute>
+        <attribute name="export-file-name">Inventory.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="Log" uuid="1a7fd025-ecbc-4761-9231-c8b21c0dcef5">
+      <field name="id" type="integer" required="true" primary="true" uuid="6ebcd088-3a21-4c3a-adcd-f4ac4c670a1f">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="action" type="string" size="20" uuid="a5557f26-a11a-40ad-9699-3578592cf327"/>
+      <field name="date" type="datetime" uuid="e234a5b7-4f0c-49c9-b6b2-278cde550736"/>
+      <field name="mail" type="integer" uuid="c6b14471-026b-4fb1-90e4-3559e5b1283c">
+        <orm-attributes>
+          <attribute name="column">mail_id</attribute>
+        </orm-attributes>
+      </field>
+      <field name="template" type="integer" uuid="2840adb6-f3ef-420a-882d-d3b024dd3b6f">
+        <orm-attributes>
+          <attribute name="column">template_id</attribute>
+        </orm-attributes>
+      </field>
+      <field name="mail_id" type="integer" required="true" unique="true" uuid="cee6ce91-95ec-4c96-a6cc-85cf7fa8faf0"/>
+      <orm-attributes>
+        <attribute name="table">log</attribute>
+        <attribute name="export-file-name">Log.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="Log" to="Mail" caption="Mail Log" uuid="78612702-f41b-4615-b236-601377019402">
+      <association-field from="mail_id" to="id"/>
+    </association>
+    <entity name="Mail" uuid="562dc900-fa13-4f26-9aff-b759f6d94b30">
+      <field name="id" type="integer" required="true" primary="true" uuid="c7eabdd3-d861-4440-8d30-a093f3e5f3df">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="address" type="string" size="200" uuid="c60bc7d1-df2d-4076-91df-9b406e52f6d0"/>
+      <field name="name" type="string" size="200" uuid="f5376558-15a0-49ae-87d5-d9768216cad5"/>
+      <field name="surname" type="string" size="200" uuid="a9fd342a-ca32-4be0-80d4-40d053906d86"/>
+      <field name="subscribed" type="boolean" uuid="d328f8dd-0892-4db2-9eae-47f127801746"/>
+      <field name="hash" type="string" size="128" uuid="85958716-c070-4669-9457-d63c53fb5e43"/>
+      <orm-attributes>
+        <attribute name="table">mail</attribute>
+        <attribute name="export-file-name">Mail.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="Template" uuid="21a2edda-5a39-40ed-a331-c11f117a3c4f">
+      <field name="id" type="integer" required="true" primary="true" uuid="5455b98b-36ee-4018-92a2-8ace4fe9df02">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" type="string" size="100" uuid="bec93275-6adf-452b-8c7a-c30a2c76f2e8"/>
+      <field name="type" type="string" size="20" uuid="54f6d888-67d5-47b3-8601-d6a6395ed0fc"/>
+      <field name="subject" type="string" size="200" uuid="38243b67-468e-416f-be19-ba3130f32b1a"/>
+      <field name="content" type="text" uuid="899949ce-19fd-4936-b29c-f807f19ab128"/>
+      <orm-attributes>
+        <attribute name="table">template</attribute>
+        <attribute name="export-file-name">Template.php</attribute>
+      </orm-attributes>
+    </entity>
+    <orm-attributes>
+      <attribute name="namespace">Mailing\MailingBundle\Entity</attribute>
+    </orm-attributes>
+  </module>
+  <visual-data>
+    <module uuid="0b1157bd-2d06-4b28-8f2b-e2e79fec43e6" bk-color="4294308862" position-x="50" position-y="50" size-x="0" size-x2="1066" size-y="0" size-y2="691"/>
+    <entity uuid="1a7fd025-ecbc-4761-9231-c8b21c0dcef5" position-x="182" position-y="40" size-x="0" size-x2="98" size-y="0" size-y2="87"/>
+    <entity uuid="21a2edda-5a39-40ed-a331-c11f117a3c4f" position-x="177" position-y="181" size-x="0" size-x2="108" size-y="0" size-y2="87"/>
+    <entity uuid="47608a24-10b4-4256-9e53-f5bcb06119d8" position-x="26" position-y="40" size-x="0" size-x2="101" size-y="0" size-y2="45"/>
+    <entity uuid="562dc900-fa13-4f26-9aff-b759f6d94b30" position-x="20" position-y="181" size-x="0" size-x2="114" size-y="0" size-y2="101"/>
+  </visual-data>
+</orm-designer>

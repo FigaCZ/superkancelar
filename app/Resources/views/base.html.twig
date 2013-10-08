@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta http-equiv="Content-Type" content="text/html"; charset=utf-8" />
+        <title>{% block title %}SuperKancelář{% endblock %} - MailGun Newsletter</title>
+        <link href="{{ asset('bundles/Mailing/css/screen.css') }}" type="text/css" rel="stylesheet" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+        <div id="wrapper">
+            <div id="header">
+                {% block header %}
+                {% endblock %}
+            </div>
+
+            <div id="content">
+                {% block content %}{% endblock %}
+            </div>
+
+            <div id="footer">
+                {% block footer %}
+                    
+                {% endblock %}
+            </div>
+        </div>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

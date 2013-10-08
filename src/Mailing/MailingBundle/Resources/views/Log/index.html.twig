@@ -1,0 +1,23 @@
+{# src/Mailing/MailingBundle/Resources/views/Log/index.html.twig #}
+{% extends 'MailingBundle::layout.html.twig' %}
+
+{% block title %}
+    Log
+{% endblock %}
+    
+{% block headline %}
+    Log
+{% endblock %}
+
+{% block content %}
+    {% if logs %}
+    <table>
+        <tr><th>Date</th><th>E-mail</th><th>Template</th></tr>
+        {% for log in logs %}
+                <tr><td>{{ log.date|date('H:i j.n.Y') }}</td><td>{{ log.action }}</td><td>{{ log.mail.address }}</td><td>{{ log.template.name }}</td></tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        No records to show...
+    {% endif %}
+{% endblock %}

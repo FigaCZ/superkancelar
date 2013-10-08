@@ -1,0 +1,36 @@
+{# src/Mailing/MailingBundle/Resources/views/Mail/index.html.twig #}
+{% extends 'MailingBundle::layout.html.twig' %}
+
+{% block title %}
+    Mails
+{% endblock %}
+
+{% block headline %}
+    Mails
+{% endblock %}    
+    
+{% block content %}
+    <a href="{{ path('MailingBundle_mail_add') }}">Add e-mail</a>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
+    {% if mails %}
+    <table>
+        <tr><th>Name</th><th>Surname</th><th>Address</th><th>Subscribed</th><th>Inventories</th><th>Tools</th></tr>
+    {% for mail in mails %}
+        <tr>
+            <td>{{ mail.name }}</td>
+            <td>{{ mail.surname }}</td>
+            <td>{{ mail.address }}</td>
+            <td>{% if mail.subscribed == 1 %}<a href="{{ path('MailingBundle_mail_unsubscribe', {'hash':mail.hash}) }}">Unsubsribe</a>{% else %}<a href="{{ path('MailingBundle_mail_subscribe', {'id':mail.id}) }}">Subscribe</a>{% endif %}</td>
+            <td>{% for inventory in mail.inventories %}{% if loop.first == false %}, {% endif %}{{inventory.name }}{% endfor %}</td>
+            <td><a href="{{ path('MailingBundle_mail_edit', {'id': mail.id }) }}">Edit</a> | <a href="{{ path('MailingBundle_mail_delete', {'id': mail.id }) }}">Delete</td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% else %}
+        Žádné záznam k zobrazení...
+    {% endif %}
+{% endblock %}

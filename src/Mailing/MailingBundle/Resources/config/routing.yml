@@ -1,0 +1,72 @@
+# src/Mailing/MailingBundle/Resources/config/routing.yml
+MailingBundle:
+    pattern:  /
+    defaults: { _controller: MailingBundle:Mail:index }
+
+MailingBundle_homepage:
+    pattern:  /mail/
+    defaults: { _controller: MailingBundle:Mail:index }
+    
+MailingBundle_mail:
+    pattern:  /mail/
+    defaults: { _controller: MailingBundle:Mail:index }
+    
+MailingBundle_inventory:
+    pattern:  /inventory/
+    defaults: { _controller: MailingBundle:Inventory:index }
+
+MailingBundle_template:
+    pattern:  /template/
+    defaults: { _controller: MailingBundle:Template:index }
+
+MailingBundle_log:
+    pattern:  /log/
+    defaults: { _controller: MailingBundle:Log:index }
+    
+MailingBundle_send:
+    pattern:  /send/
+    defaults: { _controller: MailingBundle:Send:index }
+    
+MailingBundle_mail_add:
+    pattern:  /mail/add
+    defaults: { _controller: MailingBundle:Mail:add }
+
+MailingBundle_mail_edit:
+    pattern:  /mail/edit/{id}
+    defaults: { _controller: MailingBundle:Mail:edit }
+
+MailingBundle_mail_delete:
+    pattern:  /mail/delete/{id}
+    defaults: { _controller: MailingBundle:Mail:delete }    
+    
+MailingBundle_mail_subscribe:
+    pattern:  /mail/subscribe/{id}
+    defaults: { _controller: MailingBundle:Mail:subscribe }
+
+MailingBundle_mail_unsubscribe:
+    pattern:  /mail/unsubscribe/{hash}
+    defaults: { _controller: MailingBundle:Mail:unsubscribe }
+    
+MailingBundle_inventory_add:
+    pattern:  /inventory/add
+    defaults: { _controller: MailingBundle:Inventory:add }
+    
+MailingBundle_inventory_delete:
+    pattern:  /inventory/delete/{id}
+    defaults: { _controller: MailingBundle:Inventory:delete }
+
+MailingBundle_inventory_edit:
+    pattern:  /inventory/edit/{id}
+    defaults: { _controller: MailingBundle:Inventory:edit }
+    
+MailingBundle_template_add:
+    pattern:  /template/add
+    defaults: { _controller: MailingBundle:Template:add }
+    
+MailingBundle_template_delete:
+    pattern:  /template/delete/{id}
+    defaults: { _controller: MailingBundle:Template:delete }
+
+MailingBundle_template_edit:
+    pattern:  /template/edit/{id}
+    defaults: { _controller: MailingBundle:Template:edit }

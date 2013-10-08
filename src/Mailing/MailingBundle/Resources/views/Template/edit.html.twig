@@ -1,0 +1,16 @@
+{# src/Mailing/MailingBundle/Resources/views/Template/edit.html.twig #}
+{% extends 'MailingBundle::layout.html.twig' %}
+
+{% block title %}Edit template{% endblock%}
+{% block headline %}Edit template{% endblock%}
+{% block content %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    <form action="{{ path('MailingBundle_template_edit', {'id': id }) }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <input type="submit" />
+    </form>  
+{% endblock %}

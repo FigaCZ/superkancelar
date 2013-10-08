@@ -1,0 +1,32 @@
+{# src/Mailing/MailingBundle/Resources/views/Inventory/index.html.twig #}
+{% extends 'MailingBundle::layout.html.twig' %}
+
+{% block title %}
+    Inventories
+{% endblock %}
+    
+{% block headline %}
+    Inventories
+{% endblock %}
+
+{% block content %}
+    <a href="{{ path('MailingBundle_inventory_add') }}">Add inventory</a>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+    {% if inventories %}
+    <table>
+        <tr><th>Name</th><th>Tools</th></tr>
+    {% for inventory in inventories %}
+        <tr>
+            <td>{{ inventory.name }}</td>
+            <td><a href="{{ path('MailingBundle_inventory_edit', {'id': inventory.id }) }}">Edit</a> | <a href="{{ path('MailingBundle_inventory_delete', {'id': inventory.id }) }}">Delete</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+    {% else %}
+        Žádné záznam k zobrazení...
+    {% endif %}
+{% endblock %}

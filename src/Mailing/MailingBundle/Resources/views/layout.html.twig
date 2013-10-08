@@ -1,0 +1,17 @@
+{# src/Mailing/MailingBundle/Resources/views/layout.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% block header %}
+    <div id="headline">
+        <h2>{% block headline %}{% endblock %}</h2></li>
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="{{ path('MailingBundle_mail') }}">Mails</a></li>
+            <li><a href="{{ path('MailingBundle_inventory') }}">Inventories</a></li>
+            <li><a href="{{ path('MailingBundle_template') }}">Templates</a></li>
+            <li><a href="{{ path('MailingBundle_log') }}">Log</a></li>
+            <li><a href="{{ path('MailingBundle_send') }}">Send</a></li>
+        </ul>
+    </div>
+{% endblock %}
