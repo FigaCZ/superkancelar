@@ -12,7 +12,7 @@ class AddInventory extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('name');
     }
-
+    
     public function getName() {
         return 'addInventory';
     }

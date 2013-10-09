@@ -12,7 +12,7 @@
 {% block content %}
     {% if logs %}
     <table>
-        <tr><th>Date</th><th>E-mail</th><th>Template</th></tr>
+        <tr><th>Date</th><th>Action</th><th>E-mail</th><th>Template</th></tr>
         {% for log in logs %}
                 <tr><td>{{ log.date|date('H:i j.n.Y') }}</td><td>{{ log.action }}</td><td>{{ log.mail.address }}</td><td>{{ log.template.name }}</td></tr>
         {% endfor %}

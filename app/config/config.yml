@@ -47,9 +47,9 @@ doctrine:
     dbal:
         driver:   pdo_mysql
         host:     localhost
-        dbname:   superkancelar
-        user:     root
-        password: 
+        dbname:   c9_glazar
+        user:     c9_glazar
+        password: s821hUdQ
         charset:  UTF8
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: %kernel.root_dir%/data/data.db3

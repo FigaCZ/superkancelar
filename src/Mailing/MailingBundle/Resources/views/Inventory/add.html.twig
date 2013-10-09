@@ -5,11 +5,11 @@
 {% block headline %}Add inventory{% endblock%}
 {% block content %}
     {% for flashMessage in app.session.flashbag.get('notice') %}
-        <div class="flash-notice">
+    <div class="flash-notice">
             {{ flashMessage }}
-        </div>
+    </div>
     {% endfor %}
-        <form action="{{ path('MailingBundle_inventory_add') }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('MailingBundle_inventory_add') }}" method="post" {{ form_enctype(form) }}>
             {{ form_widget(form) }}
             <input type="submit" />
         </form>

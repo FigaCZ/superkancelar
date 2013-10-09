@@ -15,7 +15,7 @@ class AddTemplate extends AbstractType {
         $builder->add('subject');
         $builder->add('content', 'textarea');
     }
-
+    
     public function getName() {
         return 'addTemplate';
     }

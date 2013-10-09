@@ -42,21 +42,22 @@ class SendController extends Controller {
                 $mailTemplate = $em->getRepository('MailingBundle:Template')->find($data['template']);
                 $mails = array();
                 foreach ($mailInventory->getMails() as $mail) {
-                    $mails[] = $mail->getAddress();
-                    // insert record to the log
-                    $log = new Log();
-                    $log->setMail($mail);
-                    $log->setTemplate($mailTemplate);
-                    $log->setAction('Sent');
-                    $log->setDate(new \DateTime("now"));
-                    $em->persist($log);
-                    $em->flush();
+                    if ($mail->getSubscribed() == 1) {
+                        $mails[] = $mail->getAddress();
+                        // insert record to the log
+                        $log = new Log();
+                        $log->setMail($mail);
+                        $log->setTemplate($mailTemplate);
+                        $log->setAction('Sent');
+                        $log->setDate(new \DateTime("now"));
+                        $em->persist($log);
+                        $em->flush();
+                    }
                 }
 
                 $mg_api = 'key-5c4-elly0fvrwwbxfnjenwap03-i5mf8';
                 $mg_version = 'api.mailgun.net/v2/';
                 $mg_domain = "filipglazar.com";
-                $mg_from_email = "filip.glazar@gmail.com";
                 $mg_reply_to_email = "filip.glazar@gmail.com";
 
                 $mg_message_url = "https://" . $mg_version . $mg_domain . "/messages";
@@ -89,14 +90,13 @@ class SendController extends Controller {
                 $result = curl_exec($ch);
                 curl_close($ch);
                 if ($result !== false) {
-                      $this->get('session')->getFlashBag()->add(
-                        'notice', 'E-mails was successfully sent...'
-                ); 
-                }
-                else {
                     $this->get('session')->getFlashBag()->add(
-                        'notice', 'Service is temporarily unavailable. Please try again later!'
-                );
+                            'notice', 'E-mails was successfully sent...'
+                    );
+                } else {
+                    $this->get('session')->getFlashBag()->add(
+                            'notice', 'Service is temporarily unavailable. Please try again later!'
+                    );
                 }
             }
         }

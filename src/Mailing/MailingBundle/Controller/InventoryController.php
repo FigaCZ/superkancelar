@@ -9,7 +9,7 @@ use Mailing\MailingBundle\Entity\Inventory;
 use Mailing\MailingBundle\Form\AddInventory;
 
 class InventoryController extends Controller {
-    
+
     /**
      * AHows all inventories
      * @return type
@@ -63,14 +63,14 @@ class InventoryController extends Controller {
         );
         return $this->redirect($this->generateUrl('MailingBundle_inventory'));
     }
-    
+
     /**
      * Generate form for edit existing inventory in DB
      * @param type $id
      * @return type
      */
     public function editAction($id) {
-       $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         $inventory = $em->getRepository('MailingBundle:Inventory')->find($id);
         $form = $this->createForm(new AddInventory(), $inventory);
 
@@ -85,12 +85,12 @@ class InventoryController extends Controller {
                 $this->get('session')->getFlashBag()->add(
                         'notice', 'Your inventory was updated!'
                 );
-                return $this->redirect($this->generateUrl('MailingBundle_inventory_edit', array('id'=>$id)));
+                return $this->redirect($this->generateUrl('MailingBundle_inventory_edit', array('id' => $id)));
             }
         }
 
         return $this->render('MailingBundle:Inventory:edit.html.twig', array(
-                    'form' => $form->createView(), 'id'=>$id
+                    'form' => $form->createView(), 'id' => $id
         ));
     }
 

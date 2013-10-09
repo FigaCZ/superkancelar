@@ -6,7 +6,6 @@ namespace Mailing\MailingBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Mailing\MailingBundle\Entity\Inventory;
 
 class AddMail extends AbstractType {
 
@@ -24,10 +23,6 @@ class AddMail extends AbstractType {
         $builder->add('address', 'email');
         $builder->add('name');
         $builder->add('surname');
-        /**$builder->add('inventories', 'choice', array(
-            'choices' => $this->inventories,
-            'multiple' => true, 
-        ));*/
         $builder->add('inventories', null, array('expanded' => "true", "multiple" => "true"));
     }
 

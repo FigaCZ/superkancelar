@@ -19,7 +19,7 @@ class TemplateController extends Controller {
         $templates = $em->getRepository('MailingBundle:Template')->findAll();
         return $this->render('MailingBundle:Template:index.html.twig', array('templates' => $templates));
     }
-    
+
     /**
      * Show form for add another template
      * @return type
@@ -47,7 +47,7 @@ class TemplateController extends Controller {
                     'form' => $form->createView()
         ));
     }
-    
+
     /**
      * Delete tempalte by given ID
      * @param type $id
@@ -63,7 +63,7 @@ class TemplateController extends Controller {
         );
         return $this->redirect($this->generateUrl('MailingBundle_template'));
     }
-    
+
     /**
      * Show form for edit template
      * @param type $id
@@ -85,12 +85,12 @@ class TemplateController extends Controller {
                 $this->get('session')->getFlashBag()->add(
                         'notice', 'Your template was updated!'
                 );
-                return $this->redirect($this->generateUrl('MailingBundle_template_edit', array('id'=>$id)));
+                return $this->redirect($this->generateUrl('MailingBundle_template_edit', array('id' => $id)));
             }
         }
 
         return $this->render('MailingBundle:Template:edit.html.twig', array(
-                    'form' => $form->createView(), 'id'=>$id
+                    'form' => $form->createView(), 'id' => $id
         ));
     }
 
