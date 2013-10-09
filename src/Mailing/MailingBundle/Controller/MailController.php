@@ -119,5 +119,21 @@ class MailController extends Controller {
         );
         return $this->redirect($this->generateUrl('MailingBundle_mail'));
     }
+    
+    /**
+     * Deletes mail in DB
+     * @param type $id
+     * @return type
+     */
+    public function deleteAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $mail = $em->getRepository('MailingBundle:Mail')->find($id);
+        $em->remove($mail);
+        $em->flush();
+        $this->get('session')->getFlashBag()->add(
+                'notice', 'Mail was deleted!'
+        );
+        return $this->redirect($this->generateUrl('MailingBundle_mail'));
+    }
 
 }
